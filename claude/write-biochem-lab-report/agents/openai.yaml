@@ -1,0 +1,4 @@
+interface:
+  display_name: "Biochemistry Lab Report"
+  short_description: "Format biochemistry lab reports and figures"
+  default_prompt: "Use $write-biochem-lab-report to draft a formatted biochemistry lab report from my experiment data."

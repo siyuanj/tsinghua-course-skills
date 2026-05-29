@@ -1,0 +1,106 @@
+\documentclass[lang={{LANG}},a4paper,11pt]{elegantpaper}
+
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{threeparttable}
+
+\renewcommand{\familydefault}{\sfdefault}
+\linespread{1.08}
+\setlength{\parskip}{0.12em}
+\setlength{\textfloatsep}{0.6em plus 0.15em minus 0.15em}
+\setlength{\floatsep}{0.45em plus 0.15em minus 0.15em}
+\setlength{\intextsep}{0.6em plus 0.15em minus 0.15em}
+\captionsetup[figure]{font=small,labelfont=bf,labelsep=period,justification=centering,singlelinecheck=false,skip=3pt}
+\captionsetup[table]{font=small,labelfont=bf,labelsep=period,justification=centering,singlelinecheck=false,skip=3pt}
+\sisetup{
+  detect-all,
+  group-separator={,},
+  group-minimum-digits=4,
+  per-mode=reciprocal
+}
+\newcommand{\upcite}[1]{\allowbreak\textsuperscript{\normalfont[#1]}}
+
+\title{{{TITLE}}}
+\author{Name: {{NAME}} \quad Student ID: {{STUDENT_ID}} \quad Class: {{CLASS_NAME}}}
+\date{{{DATE}}}
+
+\begin{document}
+
+\maketitle
+\vspace{-0.8em}
+
+\section{Introduction}
+
+Introduce only the necessary background. Define abbreviations on first use, for example enzyme-linked immunosorbent assay (ELISA), western blot (WB), or gel filtration (GF). Cite general principle or application statements with superscript bracketed numbers such as \verb|\upcite{1}|, and state the experimental aim in the final sentence of this section.
+
+\section{Methods}
+
+\subsection{Materials and Reagents}
+
+List the biological samples, assay kits, buffers, antibodies, plates, and other consumables used in the experiment. Avoid listing instruments here; consumables such as 96-well plates belong here, while readers and incubators belong in Equipment.
+
+\subsection{Equipment}
+
+List only the instruments and major devices used for the experiment, such as microplate readers, incubators, centrifuges, pipettes, gel systems, or imaging systems.
+
+\subsection{Workflow}
+
+Summarize the experimental design and sequence of operations in one short paragraph, including controls, standard/sample arrangement, replicate design, and detection wavelength when relevant.
+
+\subsection{Experimental Procedure}
+
+Describe the actual experiment in connected paragraphs. Include assay design, reagent composition, antibody/sample concentrations or dilution ratios such as 1:400, controls, incubation time, temperature, detection wavelength, and instrument settings when they matter. Do not create a separate Experiment Principle section; put broad principle in Introduction and keep this section focused on what was actually done. Do not paste a protocol as a numbered list unless the assignment explicitly asks for stepwise operations.
+
+\section{Results}
+
+\subsection{Example Figure}
+
+\begin{figure}[H]
+  \centering
+  \fbox{\begin{minipage}[c][0.24\textheight][c]{0.56\textwidth}
+    \centering
+    Replace this placeholder with a generated figure.
+  \end{minipage}}
+  \caption{\textbf{Concise figure title.}
+  The legend explains the plotted data, model, sample identity, and relevant processing details. Keep the figure and caption on the same page.}
+\end{figure}
+
+Describe what the figure shows before interpreting it. Report the regression model, fitted equation, $R^2$, sample calculation, replicate handling, and outlier handling when applicable.
+
+\subsection{Example Table}
+
+\begin{table}[H]
+  \centering
+  \caption{\textbf{Concise table title.}}
+  \begin{threeparttable}
+  \begin{tabular}{>{\raggedright\arraybackslash}p{0.30\textwidth} S[table-format=1.3] S[table-format=1.2]}
+    \toprule
+    {Sample} & {$A_{562}$} & {Concentration / mg mL$^{-1}$} \\
+    \midrule
+    Standard 1 & 0.215 & 0.20 \\
+    Standard 2 & 0.381 & 0.40 \\
+    Unknown & 0.612 & 0.69 \\
+    \bottomrule
+  \end{tabular}
+  \begin{tablenotes}
+    \footnotesize
+    \item Add notes for averaging, standard deviation, coefficient of variation, blank correction, or removed outliers.
+  \end{tablenotes}
+  \end{threeparttable}
+\end{table}
+
+\section{Discussion}
+
+Interpret the results, not just restate them. Compare methods or groups when data are available. Discuss possible causes of large differences, including pipetting error, blank correction, incubation time, protein composition, interference, regression model choice, controls, and sample degradation. Propose practical improvements, then end the Discussion with a concise final takeaway about the main quantitative findings and the reliability of the result.
+
+\section{References}
+
+\begin{enumerate}
+  \item Add references for non-original statements in the Introduction or Discussion.
+\end{enumerate}
+
+\end{document}
