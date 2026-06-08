@@ -21,6 +21,7 @@ tsinghua-course-skills/
 | Skill | 用途 |
 |---|---|
 | **`write-biochem-lab-report`** | 生化基础实验报告生成器:ElegantPaper LaTeX 模板、三线表、出版风格 matplotlib 标准曲线、整理过的 TA 反馈 checklist。覆盖 ELISA / WB / pull-down / GF / BCA / UV 等实验。 |
+| **`yuketang-replay-downloader`** | 雨课堂 / Yuketang 授权回放下载与审计工具:从已登录课程页抓取回放 MP4 链接、下载多分段回放、处理同名课堂、检查旧 manifest 是否漏段。 |
 
 ## 安装
 
@@ -31,12 +32,14 @@ tsinghua-course-skills/
 $dest = "$env:USERPROFILE\.claude\skills"
 New-Item -ItemType Directory -Force -Path $dest | Out-Null
 Copy-Item -Recurse claude\write-biochem-lab-report $dest\
+Copy-Item -Recurse claude\yuketang-replay-downloader $dest\
 ```
 
 ```bash
 # macOS / Linux
 mkdir -p ~/.claude/skills
 cp -r claude/write-biochem-lab-report ~/.claude/skills/
+cp -r claude/yuketang-replay-downloader ~/.claude/skills/
 ```
 
 ### Codex
@@ -46,12 +49,14 @@ cp -r claude/write-biochem-lab-report ~/.claude/skills/
 $dest = "$env:USERPROFILE\.codex\skills"
 New-Item -ItemType Directory -Force -Path $dest | Out-Null
 Copy-Item -Recurse codex\write-biochem-lab-report $dest\
+Copy-Item -Recurse codex\yuketang-replay-downloader $dest\
 ```
 
 ```bash
 # macOS / Linux
 mkdir -p ~/.codex/skills
 cp -r codex/write-biochem-lab-report ~/.codex/skills/
+cp -r codex/yuketang-replay-downloader ~/.codex/skills/
 ```
 
 安装后 Claude Code / Codex 会自动发现这个 skill。
@@ -64,11 +69,14 @@ cp -r codex/write-biochem-lab-report ~/.codex/skills/
 
 > 用 BCA 法的吸光度数据帮我画一张标准曲线,推出未知样品浓度
 
+> 帮我把这门雨课堂课程的授权回放全部下载下来,并检查有没有漏掉多分段视频
+
 工具会自动读 skill 里的 workflow / format checklist / 模板,然后开始写。
 
 ## 依赖
 
-- Python 3.10+(`matplotlib`、`numpy`、`pandas`、`Pillow` 用于绘图与图像脚本)
+- Python 3.10+(`matplotlib`、`numpy`、`pandas`、`Pillow` 用于绘图与图像脚本;`playwright` 用于雨课堂课程页自动化)
+- Chrome / Chromium 与 `curl.exe`(用于雨课堂授权回放抓取与下载)
 - LaTeX with XeLaTeX + `latexmk`(Windows 上 MiKTeX 够用,Linux/Mac 上 TeX Live 够用)
 - `poppler` 工具集(可选,用 `pdftotext` 验证编译结果)
 
@@ -95,6 +103,8 @@ claude/<skill-name>/
 ```
 
 `codex/<skill-name>/` 镜像 `claude/<skill-name>/`,只把 SKILL.md 里的安装路径示例从 `.claude` 改成 `.codex`。
+
+请不要提交个人课程 ID、签名回放 URL、cookies、浏览器 profile、下载 manifest、视频文件或本机绝对路径。
 
 ## License
 

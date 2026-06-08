@@ -26,6 +26,16 @@ venv/
 Thumbs.db
 desktop.ini
 
+# Yuketang / downloaded course artifacts
+downloads/
+transcripts/
+transcripts_openai/
+replays.json
+*.mp4
+*.m4a
+*.wav
+.playwright-yuketang-profile/
+
 # Editor
 .vscode/
 .idea/

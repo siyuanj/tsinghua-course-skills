@@ -1,0 +1,4 @@
+interface:
+  display_name: "Yuketang Replay Downloader"
+  short_description: "Download and audit authorized Yuketang replay videos"
+  default_prompt: "Use $yuketang-replay-downloader to find, download, and audit all authorized Yuketang replay MP4 segments for a course."
