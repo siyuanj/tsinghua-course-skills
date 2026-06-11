@@ -78,6 +78,8 @@ The batch script waits for the authenticated course API before collecting lesson
 
 - File names are derived from lesson titles with Windows-invalid characters replaced.
 - Multi-segment lessons use `Title.mp4`, `Title - part 2.mp4`, `Title - part 3.mp4`, etc.
+- If a user says `part 1` is missing for a multi-segment lesson, first check for the unsuffixed main file `Title.mp4`; in the current naming convention that file is part 1.
+- If audit reports a missing `Title - part 2.mp4` but an older numbered file such as `11 Title - part 2.mp4` exists with the expected size and duration, reconcile the manifest path or copy/rename the file before recapturing signed URLs.
 - Duplicate lesson titles in one run use `Title.mp4`, `Title - 2.mp4`, `Title - 3.mp4`, etc.
 - Keep script-generated names unless the user asks for a rename; inspect the manifest before any manual rename.
 

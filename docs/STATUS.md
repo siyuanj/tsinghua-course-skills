@@ -2,6 +2,11 @@
 
 ## Current State
 
+- Clarified the `yuketang-replay-downloader` naming guidance after a
+  real-world audit case: for multi-segment lessons, the unsuffixed `Title.mp4`
+  is part 1, and agents should check for older numbered files such as
+  `11 Title - part 2.mp4` before recapturing signed URLs for a reported
+  missing `Title - part 2.mp4`.
 - Added `yuketang-replay-downloader` for both Claude and Codex skill layouts.
 - The skill is a generic authorized Yuketang/Rain Classroom replay downloader
   and auditor. It does not include user-specific course IDs, signed media URLs,
