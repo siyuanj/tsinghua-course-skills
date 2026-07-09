@@ -1,0 +1,4 @@
+interface:
+  display_name: "ChimeraX Structure Figures"
+  short_description: "Render publication-style structure images"
+  default_prompt: "Use $chimerax-structure-figures to render clean ChimeraX structure panels from my PDB/mmCIF files."

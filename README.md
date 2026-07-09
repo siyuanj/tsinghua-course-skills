@@ -9,8 +9,10 @@
 ```
 tsinghua-course-skills/
 ├── claude/
+│   ├── chimerax-structure-figures/  # 装到 ~/.claude/skills/
 │   └── write-biochem-lab-report/    # 装到 ~/.claude/skills/
 └── codex/
+    ├── chimerax-structure-figures/  # 装到 ~/.codex/skills/
     └── write-biochem-lab-report/    # 装到 ~/.codex/skills/
 ```
 
@@ -20,6 +22,7 @@ tsinghua-course-skills/
 
 | Skill | 用途 |
 |---|---|
+| **`chimerax-structure-figures`** | ChimeraX 结构作图工具:整体结构、局部接触、整体 align、align 后局部接触四类图;自动生成 `.cxc`、`.cxs` 和 PNG,支持透明背景 icon、cartoon 渲染、按链/按模型配色、氢键标注。 |
 | **`write-biochem-lab-report`** | 生化基础实验报告生成器:ElegantPaper LaTeX 模板、三线表、出版风格 matplotlib 标准曲线、整理过的 TA 反馈 checklist。覆盖 ELISA / WB / pull-down / GF / BCA / UV 等实验。 |
 | **`yuketang-replay-downloader`** | 雨课堂 / Yuketang 授权回放下载与审计工具:从已登录课程页抓取回放 MP4 链接、下载多分段回放、处理同名课堂、检查旧 manifest 是否漏段。 |
 
@@ -33,6 +36,7 @@ $dest = "$env:USERPROFILE\.claude\skills"
 New-Item -ItemType Directory -Force -Path $dest | Out-Null
 Copy-Item -Recurse claude\write-biochem-lab-report $dest\
 Copy-Item -Recurse claude\yuketang-replay-downloader $dest\
+Copy-Item -Recurse claude\chimerax-structure-figures $dest\
 ```
 
 ```bash
@@ -40,6 +44,7 @@ Copy-Item -Recurse claude\yuketang-replay-downloader $dest\
 mkdir -p ~/.claude/skills
 cp -r claude/write-biochem-lab-report ~/.claude/skills/
 cp -r claude/yuketang-replay-downloader ~/.claude/skills/
+cp -r claude/chimerax-structure-figures ~/.claude/skills/
 ```
 
 ### Codex
@@ -50,6 +55,7 @@ $dest = "$env:USERPROFILE\.codex\skills"
 New-Item -ItemType Directory -Force -Path $dest | Out-Null
 Copy-Item -Recurse codex\write-biochem-lab-report $dest\
 Copy-Item -Recurse codex\yuketang-replay-downloader $dest\
+Copy-Item -Recurse codex\chimerax-structure-figures $dest\
 ```
 
 ```bash
@@ -57,6 +63,7 @@ Copy-Item -Recurse codex\yuketang-replay-downloader $dest\
 mkdir -p ~/.codex/skills
 cp -r codex/write-biochem-lab-report ~/.codex/skills/
 cp -r codex/yuketang-replay-downloader ~/.codex/skills/
+cp -r codex/chimerax-structure-figures ~/.codex/skills/
 ```
 
 安装后 Claude Code / Codex 会自动发现这个 skill。
@@ -71,11 +78,14 @@ cp -r codex/yuketang-replay-downloader ~/.codex/skills/
 
 > 帮我把这门雨课堂课程的授权回放全部下载下来,并检查有没有漏掉多分段视频
 
+> 用 ChimeraX 给这个 GPCR 复合物出一张整体 align 图和一张局部接触图,标出氢键
+
 工具会自动读 skill 里的 workflow / format checklist / 模板,然后开始写。
 
 ## 依赖
 
 - Python 3.10+(`matplotlib`、`numpy`、`pandas`、`Pillow` 用于绘图与图像脚本;`playwright` 用于雨课堂课程页自动化)
+- UCSF ChimeraX(用于结构图渲染;可通过 `CHIMERAX_EXE` 指定可执行文件路径)
 - Chrome / Chromium 与 `curl.exe`(用于雨课堂授权回放抓取与下载)
 - LaTeX with XeLaTeX + `latexmk`(Windows 上 MiKTeX 够用,Linux/Mac 上 TeX Live 够用)
 - `poppler` 工具集(可选,用 `pdftotext` 验证编译结果)

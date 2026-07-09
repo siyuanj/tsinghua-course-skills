@@ -2,6 +2,14 @@
 
 ## Current State
 
+- Added `chimerax-structure-figures` for both Claude and Codex skill layouts.
+- The skill is a generic UCSF ChimeraX structure-rendering workflow for
+  standalone whole-structure panels, local contact closeups with optional
+  hydrogen bonds, aligned whole-structure overlays, and aligned local-contact
+  overlays.
+- The bundled script generates reproducible `.cxc` command files, saves `.cxs`
+  sessions, renders PNG output, supports transparent icon rendering, and avoids
+  hardcoded project-local structure paths.
 - Clarified the `yuketang-replay-downloader` naming guidance after a
   real-world audit case: for multi-segment lessons, the unsuffixed `Title.mp4`
   is part 1, and agents should check for older numbered files such as
@@ -21,6 +29,12 @@
 
 ## Validation
 
+- Python syntax check passed for both Claude and Codex copies of
+  `render_structure_figure.py`.
+- The `chimerax-structure-figures` skill passed the Codex skill validator before
+  import into this repository.
+- A local MC4R single-structure transparent PNG render was tested before
+  import; contact and align modes were checked with dry-run `.cxc` generation.
 - Python syntax check passed for both Claude and Codex copies of
   `batch_yuketang_replays.py` and `audit_manifest.py`.
 - PowerShell syntax check passed for both copies of
